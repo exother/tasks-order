@@ -38,7 +38,8 @@ group :development, :test do
   gem 'rspec-expectations', github: 'rspec/rspec-expectations', branch: 'master'
   gem 'rspec-mocks', github: 'rspec/rspec-mocks', branch: 'master'
   gem 'rspec-rails', github: 'rspec/rspec-rails', branch: 'master'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1'
   # gem 'capybara'
 end
 
