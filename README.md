@@ -12,3 +12,10 @@
 10. Add predefining jobs section.
 11. Require the main section to use only the predefined jobs.
 12. Deploy the result to heroku.
+
+# ALGORITHM DESCRIPTION
+
+We build directed (acyclic) graph from the given structure and remember number of inner edges for all vertices.
+Then, we initiate some queue and throw all the vertices with zero inner edges.
+Getting vertices from the queue one by one, we go to their neighbours, decrement their amount of inner edges by 1 and when the amount is zero, we simply throw the vertex on the queue.
+After visiting all the neighbours, we add the vertex at the end of the output collection.
