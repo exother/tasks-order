@@ -4,6 +4,11 @@ class Task
   attr_accessor :name
   attr_accessor :next
 
+  def initialize(*args)
+    @next ||= []
+    super
+  end
+
   class << self
 
     # Creates collection of tasks from the given string, sets 'next' elements
