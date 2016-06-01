@@ -70,7 +70,7 @@ RSpec.describe Task, type: :model do
       collection = [a,b,c]
       ordered = Task.order(collection)
 
-      expect(ordered.index(b)).to be < ordered.index(c)
+      expect(ordered.index(b)).to be > ordered.index(c)
     end
 
     it 'return proper sequence when many jobs and many dependencies' do
@@ -87,10 +87,10 @@ RSpec.describe Task, type: :model do
       collection = [a,b,c,d,e,f]
       ordered = Task.order(collection)
 
-      expect(ordered.index(b)).to be < ordered.index(c)
-      expect(ordered.index(c)).to be < ordered.index(f)
-      expect(ordered.index(d)).to be < ordered.index(a)
-      expect(ordered.index(e)).to be < ordered.index(b)
+      expect(ordered.index(b)).to be > ordered.index(c)
+      expect(ordered.index(c)).to be > ordered.index(f)
+      expect(ordered.index(d)).to be > ordered.index(a)
+      expect(ordered.index(e)).to be > ordered.index(b)
     end
   end
 end
