@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'bower-rails'
 gem 'slim'
 gem 'slim-rails'
+gem 'materialize-sass'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
