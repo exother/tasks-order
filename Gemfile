@@ -27,7 +27,9 @@ gem 'jbuilder', '~> 2.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# gem 'bower-rails'
+gem 'bower-rails'
+gem 'slim'
+gem 'slim-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -41,7 +43,7 @@ group :development, :test do
   gem 'rspec-mocks', github: 'rspec/rspec-mocks', branch: 'master'
   gem 'rspec-rails', github: 'rspec/rspec-rails', branch: 'master'
   gem 'factory_girl_rails'
-  # gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1'
+  gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1'
   # gem 'capybara'
 end
 

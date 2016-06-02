@@ -1,1 +1,1 @@
-(function(){var t;t=function(){function t(t){t.test=[]}return t}(),angular.module("app").controller("statsController",["$scope",t])}).call(this);
+(function(){angular.module("app",[])}).call(this),function(){var e;e=function(){function e(e){e.test="teeeeeeeest"}return e}(),angular.module("app").controller("pageController",["$scope",e])}.call(this);

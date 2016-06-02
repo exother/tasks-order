@@ -1,3 +1,3 @@
 class Page extends Controller
   constructor:($scope)->
-    $scope.test = []
+    $scope.test = "teeeeeeeest"
