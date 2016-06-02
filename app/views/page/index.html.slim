@@ -1,5 +1,55 @@
-.page ng-controller='pageController'
-  h1 Page#index
-  p Find me in app/views/page/index.html.slim
-  p
-    | {{test}}
+header
+  nav
+    .container
+      .nav-wrapper
+        a.brand-logo href='#' Tasks Ordering Application
+        ul.right.side-nav#nav-mobile
+          li.hide-on-small-only
+            a href='#'
+              i.mdi-navigation-arrow-back
+        a.button-collapse href='#' data-activates='nav-mobile'
+          i.mdi-navigation-menu
+main ng-controller='pageController'
+  .parallax-container
+    .parallax
+      img src='http://warlyware.com/img/sky3_compressed.jpg'
+  .section.white
+    .row.container
+      .row
+        .input-field.col.s12
+          textarea.materialize-textarea#content ng-model='tasks_structure'
+          label for='content' Job structure
+        .error-report  ng-show='orderedTasksStatus == "error"'
+          .chip.red.darken-1.left
+            | WARNING
+          .chip.white.red-text.left
+            | {{orderedTasksError}}
+        a.waves-effect.waves-light.btn-large.right ng-click='orderTasks()'
+          i.material-icons.right
+            | shuffle
+          | Order tasks!
+      .row ng-show='orderedTasksStatus == "ok"'
+        .col.s3 &nbsp;
+        .col.s6
+          .chip.green-text.darken-1.left
+            | ORDERED
+          .order-letters
+            .chip.green.left ng-repeat='name in orderedTasks.split("")'
+              | {{name}}
+
+        .col.s3 &nbsp;
+  .parallax-container
+    .parallax
+      img src='http://www.future-webdesign.com/img/background2.jpg'
+
+  footer.page-footer
+    br
+    br
+    br
+    br
+    br
+
+/h1 Page#index
+/p Find me in app/views/page/index.html.slim
+/p
+/  | {{test}}
