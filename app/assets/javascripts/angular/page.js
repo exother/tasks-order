@@ -1,0 +1,1 @@
+(function(){var t;t=function(){function t(t){t.test=[]}return t}(),angular.module("app").controller("statsController",["$scope",t])}).call(this);
