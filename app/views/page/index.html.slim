@@ -3,21 +3,58 @@ header
     .container
       .nav-wrapper
         a.brand-logo href='#' Tasks Ordering Application
-        ul.right.side-nav#nav-mobile
-          li.hide-on-small-only
-            a href='#'
-              i.mdi-navigation-arrow-back
-        a.button-collapse href='#' data-activates='nav-mobile'
-          i.mdi-navigation-menu
+        .switch.right
+          label.white-text
+            | Predefined
+            input type='checkbox' ng-model='app_custom_mode'
+            span.lever
+            | Custom
 main ng-controller='pageController'
-  .parallax-container
+  .parallax-container.valign-wrapper ng-hide='app_custom_mode'
     .parallax
       img src='http://warlyware.com/img/sky3_compressed.jpg'
-  .section.white
     .row.container
       .row
+        .col.s12.m3.center-align
+          | &nbsp;
+        .col.s12.m6.center-align
+          a.waves-effect.waves-light.btn-large.left.modal-trigger href='#add_task'
+            i.material-icons.right
+              | add
+            | Add task
+          a.waves-effect.waves-light.btn-large.right.modal-trigger href='#tasks_list'
+            i.material-icons.right
+              | view_list
+            | List of tasks
+  .modal#add_task
+    .modal-content
+      | adding task
+  .modal#tasks_list
+    .modal-content
+      | list of tasks
+  .section.white#adding_dependencies ng-hide='app_custom_mode'
+    .row.container
+      .row
+        h5.red-text.text-lighten-2 Adding dependencies
+        br
+        br
+        .input-field.col.s12.m4
+          select
+            option aaa
+          label The element
+        .input-field.col.s12.m4
+          select
+            option bbb
+          label depends on the element
+        .input-field.col.s12.m2
+          a.waves-effect.waves-light.btn-large.right
+            | Add
+  .section.white#tasks_ordering
+    .row.container
+      .row
+        h5.red-text.text-lighten-2 Ordering tasks
         .input-field.col.s12
-          textarea.materialize-textarea#content ng-model='tasks_structure' ng-change='updateTemp()'
+          textarea.materialize-textarea#content ng-model='tasks_structure' ng-change='updateTemp()' ng-disabled='!app_custom_mode'
           label for='content' Job structure
 
         .preloader-wrapper.small.active ng-show='loading_validation'
