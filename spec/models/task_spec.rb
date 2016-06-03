@@ -92,5 +92,22 @@ RSpec.describe Task, type: :model do
       expect(ordered.index(d)).to be > ordered.index(a)
       expect(ordered.index(e)).to be > ordered.index(b)
     end
+
+    it 'does not return duplicated jobs' do
+      a = Task.new
+      b = Task.new
+      c = Task.new
+      d = Task.new
+      e = Task.new
+      a.next << b
+      b.next << c
+      a.next << c
+      d.next << a
+      a.next << e
+      collection = [a,b,c,d,e]
+      ordered = Task.order(collection)
+
+      expect(ordered.size).to eq(ordered.uniq.size)
+    end
   end
 end

@@ -54,7 +54,7 @@ class Task
         task = queue.pop
         task.try(:next).each do |next_task|
           in_deg[next_task] -= 1
-          queue.push(next_task) if in_deg[task] == 0
+          queue.push(next_task) if in_deg[next_task] == 0
         end
         final_order << task
       end
