@@ -17,9 +17,19 @@ main ng-controller='pageController'
     .row.container
       .row
         .input-field.col.s12
-          textarea.materialize-textarea#content ng-model='tasks_structure'
+          textarea.materialize-textarea#content ng-model='tasks_structure' ng-change='updateTemp()'
           label for='content' Job structure
-        .error-report  ng-show='orderedTasksStatus == "error"'
+
+        .preloader-wrapper.small.active ng-show='loading_validation'
+          .spinner-layer.spinner-green-only
+            .circle-clipper.left
+              .circle
+            .gap-patch
+              .circle
+            .circle-clipper.right
+              .circle
+
+        .error-report  ng-show='orderedTasksStatus == "error" && !loading_validation'
           .chip.red.darken-1.left
             | WARNING
           .chip.white.red-text.left
