@@ -35,7 +35,7 @@ main ng-controller='pageController'
         .input-field.col.s12.m11
           input#task_name type='text' ng-model='newTaskName'
           label for='task_name' Task Name
-      .btn-floating.btn-large.waves-effect.waves-light.right ng-click='addTask()'
+      .btn-floating.btn-large.waves-effect.waves-light.right ng-click='addTask()' ng-show='newTaskId.length > 0 && newTaskName.length > 0'
         i.material-icons
           | add
 
@@ -61,6 +61,10 @@ main ng-controller='pageController'
             option value=' ' selected='' Empty
             option value='{{task.id}}' ng-repeat='task in taskList'
               | {{task.id}}: {{task.name}}
+        .input-field.col.s12.m1
+          .center-align
+            .chip
+              | before
         .input-field.col.s12.m4
           select.browser-default ng-model='dependency_element_second'
             option value=' ' selected='' Empty
