@@ -28,34 +28,59 @@ main ng-controller='pageController'
             | List of tasks
   .modal#add_task
     .modal-content
-      | adding task
+      .row
+        .input-field.col.s12.m1
+          input.center#task_id type='text' maxlength='1' ng-model='newTaskId'
+          label for='task_id' Task ID
+        .input-field.col.s12.m11
+          input#task_name type='text' ng-model='newTaskName'
+          label for='task_name' Task Name
+      .btn-floating.btn-large.waves-effect.waves-light.right ng-click='addTask()'
+        i.material-icons
+          | add
+
+      br
+      br
   .modal#tasks_list
     .modal-content
-      | list of tasks
-  .section.white#adding_dependencies ng-hide='app_custom_mode'
+      .row
+        .collection
+          .collection-item ng-repeat='(k,task) in taskList'
+            | {{task.id}} - {{task.name}}
+            a.secondary-content ng-click='deleteTask(k)'
+              i.material-icons
+                | delete
+  .section.white#adding_dependencies ng-hide='app_custom_mode || taskList.length == 0'
     .row.container
       .row
         h5.red-text.text-lighten-2 Adding dependencies
         br
         br
         .input-field.col.s12.m4
-          select
-            option aaa
-          label The element
+          select.browser-default ng-model='dependency_element_first'
+            option value=' ' selected='' Empty
+            option value='{{task.id}}' ng-repeat='task in taskList'
+              | {{task.id}}: {{task.name}}
         .input-field.col.s12.m4
-          select
-            option bbb
-          label depends on the element
+          select.browser-default ng-model='dependency_element_second'
+            option value=' ' selected='' Empty
+            option value='{{task.id}}' ng-repeat='task in taskList'
+              | {{task.id}}: {{task.name}}
         .input-field.col.s12.m2
-          a.waves-effect.waves-light.btn-large.right
+          a.waves-effect.waves-light.btn-large.right.grey.lighten-4.black-text ng-click='backDependency()' ng-show='tasks_structure_temp.length != null'
+            | Back
+          a.waves-effect.waves-light.btn-large.right ng-click='addDependency()'
             | Add
-  .section.white#tasks_ordering
+  .section.white#tasks_ordering ng-show='app_custom_mode || tasks_structure.length > 0'
     .row.container
       .row
         h5.red-text.text-lighten-2 Ordering tasks
-        .input-field.col.s12
+        .input-field.col.s12 ng-show='app_custom_mode'
           textarea.materialize-textarea#content ng-model='tasks_structure' ng-change='updateTemp()' ng-disabled='!app_custom_mode'
           label for='content' Job structure
+
+        blockquote ng-hide='app_custom_mode'
+          | {{tasks_structure}}
 
         .preloader-wrapper.small.active ng-show='loading_validation'
           .spinner-layer.spinner-green-only

@@ -8,8 +8,14 @@ class Page extends Controller
     live_validation_delay = 2 * 1000
     current_validation_time = null
     $scope.loading_validation = false
+    $scope.tasks_structure = ''
+    $scope.tasks_structure_temp = null
 
     $scope.temp = ""
+
+    $scope.taskList = []
+    $scope.newTaskId = ''
+    $scope.newTaskName = ''
 
     $scope.orderTasks = ->
       pageService.order($scope.tasks_structure)
@@ -40,3 +46,25 @@ class Page extends Controller
       $timeout ->
         updateTempDelayed()
       , live_validation_delay
+
+    $scope.addTask = ->
+      $scope.taskList.push({'id': $scope.newTaskId, 'name': $scope.newTaskName})
+      $scope.newTaskId = ''
+      $scope.newTaskName = ''
+      $timeout ->
+        jQuery('select').material_select()
+        jQuery('select').val(' ')
+      , 300
+
+    $scope.deleteTask = (key) ->
+      $scope.taskList.splice(key, 1)
+
+    $scope.addDependency = ->
+      $scope.tasks_structure_temp = $scope.tasks_structure if $scope.dependency_element_first != ' '
+      $scope.tasks_structure += $scope.dependency_element_first.trim() + ' => ' + $scope.dependency_element_second.trim() + '\n' if $scope.dependency_element_first != ' '
+      $scope.updateTemp()
+
+    $scope.backDependency = ->
+      $scope.tasks_structure = $scope.tasks_structure_temp
+      $scope.tasks_structure_temp = null
+      $scope.updateTemp()
