@@ -114,16 +114,29 @@ main ng-controller='pageController'
               | {{name}}
 
         .col.s3 &nbsp;
-  .parallax-container
+  .parallax-container.valign-wrapper
     .parallax
       img src='http://www.future-webdesign.com/img/background2.jpg'
+    .row.container
+      .row
+        .col.s12.m2.center-align
+          | &nbsp;
+        .col.s12.m8.white
+          h5.red-text.text-lighten-2 Application Usage
+          p.grey-text
+            | There are two ways to use the application. Defaultly, you are able to use only the tasks you have predefined earlier. To define task, click the "ADD TASK" button above.
+            | You are also able to delete the task. Simply click the "LIST OF TASKS" button and then click the trash button near the task you want to delete.
+            | The second option to use the app is the "custom way". Set the switch located in the right top corner and write dependencies in the textarea.
 
   footer.page-footer
-    br
-    br
-    br
-    br
-    br
+    .container
+      .row
+        .col.l6.s12.right
+          p.grey-text.text-lighten-4
+            | You can use rows and columns here to organize your footer content.
+    .footer-copyright
+      .container
+        | © 2016 Copyright Michał Zezyk for AdRetail
 
 /h1 Page#index
 /p Find me in app/views/page/index.html.slim

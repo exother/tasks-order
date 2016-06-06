@@ -68,3 +68,8 @@ class Page extends Controller
       $scope.tasks_structure = $scope.tasks_structure_temp
       $scope.tasks_structure_temp = null
       $scope.updateTemp()
+
+    $scope.scrollToTop = ->
+      jQuery("html, body").animate
+        scrollTop:0
+      , 'slow'
